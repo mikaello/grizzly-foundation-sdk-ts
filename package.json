@@ -1,0 +1,13 @@
+{
+  "name": "grizzly-foundation-sdk-ts",
+  "version": "1.0.0",
+  "description": "This library provides utilities for [Grizzly](https://github.com/grafana/grizzly), a utility for managing observability resources on Grafana and hosted Prometheus installations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mikaello",
+  "devDependencies": {
+    "typescript": "5.7.2"
+  }
+}
