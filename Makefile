@@ -1,13 +1,19 @@
+jsonnetExampleDir := jsonnet-example
+
 install-tools:
 	go install github.com/google/go-jsonnet/cmd/jsonnet@latest
 	go install -a github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb@latest
 	go install -a github.com/grafana/grizzly/cmd/grr@v0.6.1
 
+format-jsonnet:
+	go install github.com/google/go-jsonnet/cmd/jsonnetfmt@latest
+	jsonnetfmt -i ${jsonnetExampleDir}/*.jsonnet
+
 install-dependencies:
 	jb install
 
 generate-test-dashboards:
-	cd jsonnet-example && jb install; \
+	cd ${jsonnetExampleDir} && jb install; \
 	jsonnet -J vendor -o compiled.json main.jsonnet
 
 deploy-snapshot: # Requires config: https://grafana.github.io/grizzly/configuration#configuring-grizzly-with-environment-variables

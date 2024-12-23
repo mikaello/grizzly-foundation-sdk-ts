@@ -1,0 +1,17 @@
+{
+  "name": "foundation-sdk-example",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "description": "",
+  "dependencies": {
+    "@grafana/grafana-foundation-sdk": "11.4.0-cogv0.0.x.1734047678",
+    "@mikaello/grizzly-foundation-sdk-ts": "file:./../"
+  },
+  "devDependencies": {
+    "typescript": "5.7.2"
+  }
+}
