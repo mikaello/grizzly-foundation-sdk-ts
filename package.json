@@ -5,6 +5,7 @@
   "type": "module",
   "description": "This library provides utilities for [Grizzly](https://github.com/grafana/grizzly), a utility for managing observability resources on Grafana and hosted Prometheus installations.",
   "scripts": {
+    "verify-typescript": "tsc -p tsconfig.json --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "mikaello",

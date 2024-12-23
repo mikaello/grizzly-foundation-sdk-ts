@@ -1,5 +1,5 @@
-import { newResource, withSpec } from "./resource";
-import { makeResource } from "./util";
+import { newResource, withSpec } from "./resource.js";
+import { makeResource } from "./util.js";
 
 export const getFolder = (main: {
   grafanaDashboardFolder: string | undefined;

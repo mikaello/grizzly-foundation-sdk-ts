@@ -1,5 +1,5 @@
-import { newResource, addMetadata, withSpec } from "./resource";
-import { makeResource } from "./util";
+import { newResource, addMetadata, withSpec } from "./resource.js";
+import { makeResource } from "./util.js";
 
 export const getMixinRuleNames = (mixins: Record<string, any>): string[] => {
   const flatMixins = Object.values(mixins).flat();

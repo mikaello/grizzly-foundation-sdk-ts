@@ -1,4 +1,4 @@
-import { newResource, addMetadata, withSpec } from "./resource";
+import { newResource, addMetadata, withSpec } from "./resource.js";
 
 export function newCheck(type: string, name: string, check: object) {
   let resource = newResource("SyntheticMonitoringCheck", name);

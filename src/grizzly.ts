@@ -5,10 +5,16 @@ import {
   getFolder,
   fromMap,
   fromMixins,
-} from "./grafana";
-import { getMixinRuleNames, fromMapsFiltered, rule_group } from "./prometheus";
-import { newResource } from "./resource";
-import { newCheck } from "./check";
+} from "./grafana.js";
+import { getMixinRuleNames, fromMapsFiltered, rule_group } from "./prometheus.js";
+import {
+  defaultApiVersion,
+  withApiVersion,
+  addMetadata,
+  newResource,
+  withSpec,
+} from "./resource.js";
+import { newCheck } from "./check.js";
 
 type Main = {
   grafanaDashboards: Record<string, any>;
@@ -35,6 +41,12 @@ export const fromPrometheusKsonnet = (main: Main) => {
   };
 };
 
-export const resource = newResource;
+export const resource = {
+  defaultApiVersion,
+  withApiVersion,
+  addMetadata,
+  newResource,
+  withSpec,
+};
 export { dashboard, folder, datasource, rule_group };
 export const synthetic_monitoring_check = newCheck;

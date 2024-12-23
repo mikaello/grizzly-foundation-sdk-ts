@@ -5,17 +5,21 @@ import {
   dashboard,
   datasource,
   folder,
+  resource,
 } from "@mikaello/grizzly-foundation-sdk-ts";
 
 import { exampleDashboard } from "./example-dashboard.js";
+import { exampleDatasource } from "example-datasource.js";
 
 let resources = {
-  folder: folder.new("example-folder", "Example Folder"),
-  datasources: [
-    datasource.new("example-datasource", { title: "Example Datasource" }),
-  ],
+  folder: folder.new("example-name", "Example Folder"),
+  datasources: [datasource.new("example-datasource-name", exampleDatasource)],
   dashboards: [
-    dashboard.new("example-dashboard-name", exampleDashboard.build()),
+    resource.addMetadata(
+      dashboard.new("example-dashboard-name", exampleDashboard.build()),
+      "folder",
+      "example-name"
+    ),
   ],
 };
 
