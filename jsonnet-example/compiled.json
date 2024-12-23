@@ -1,0 +1,78 @@
+{
+   "dashboards": [
+      {
+         "apiVersion": "grizzly.grafana.com/v1alpha1",
+         "kind": "Dashboard",
+         "metadata": {
+            "folder": "example-name",
+            "name": "example-dashboard-name"
+         },
+         "spec": {
+            "description": "Example dashboard built with Grafonnet",
+            "panels": [
+               {
+                  "datasource": {
+                     "type": "datasource",
+                     "uid": "-- Mixed --"
+                  },
+                  "gridPos": {
+                     "h": 8,
+                     "w": 24
+                  },
+                  "id": 1,
+                  "pluginVersion": "v11.4.0",
+                  "targets": [
+                     {
+                        "datasource": {
+                           "type": "prometheus",
+                           "uid": "grafana"
+                        },
+                        "expr": "random_walk"
+                     }
+                  ],
+                  "title": "Random walk",
+                  "type": "timeseries"
+               }
+            ],
+            "schemaVersion": 39,
+            "time": {
+               "from": "now-6h",
+               "to": "now"
+            },
+            "timezone": "utc",
+            "title": "Grafonnet example",
+            "uid": "example-dashboard-name"
+         }
+      }
+   ],
+   "datasources": [
+      {
+         "apiVersion": "grizzly.grafana.com/v1alpha1",
+         "kind": "Datasource",
+         "metadata": {
+            "name": "example-datasource-name"
+         },
+         "spec": {
+            "jsonData": {
+               "enableSecureSocksProxy": false,
+               "httpMethod": "POST"
+            },
+            "name": "prometheus-demo-query",
+            "orgId": 1,
+            "type": "prometheus",
+            "uid": "de7rd55gggohsc",
+            "url": "https://prometheus.demo.do.prometheus.io"
+         }
+      }
+   ],
+   "folder": {
+      "apiVersion": "grizzly.grafana.com/v1alpha1",
+      "kind": "DashboardFolder",
+      "metadata": {
+         "name": "example-name"
+      },
+      "spec": {
+         "title": "Example Folder"
+      }
+   }
+}

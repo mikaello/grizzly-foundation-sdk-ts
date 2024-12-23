@@ -1,7 +1,7 @@
 local grr = import 'github.com/grafana/jsonnet-libs/grizzly/grizzly.libsonnet';
 
 {
-  folder: grr.folder.new('example-name'),
+  folder: grr.folder.new('example-name', 'Example Folder'),
   datasources: [
     grr.datasource.new('example-datasource-name', (import 'example_datasource.jsonnet')),
   ],

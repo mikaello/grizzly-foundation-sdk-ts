@@ -6,6 +6,10 @@ install-tools:
 install-dependencies:
 	jb install
 
+generate-test-dashboards:
+	cd jsonnet-example && jb install; \
+	jsonnet -J vendor -o compiled.json main.jsonnet
+
 deploy-snapshot: # Requires config: https://grafana.github.io/grizzly/configuration#configuring-grizzly-with-environment-variables
 	grr snapshot -e 1000 dashboards.jsonnet
 
