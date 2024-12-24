@@ -1,4 +1,5 @@
 jsonnetExampleDir := jsonnet-example
+foundationSDKExampleDir := foundation-sdk-example
 
 install-tools:
 	go install github.com/google/go-jsonnet/cmd/jsonnet@latest
@@ -12,9 +13,13 @@ format-jsonnet:
 install-dependencies:
 	jb install
 
-generate-test-dashboards:
+generate-test-dashboards-grizzly:
 	cd ${jsonnetExampleDir} && jb install; \
-	jsonnet -J vendor -o compiled.json main.jsonnet
+	jsonnet -J vendor main.jsonnet | jq --sort-keys > compiled.json
+
+generate-test-dashboards-foundation-sdk:
+	cd ${foundationSDKExampleDir} && npm install; \
+	npm run -s build | jq --sort-keys > compiled.json
 
 deploy-snapshot: # Requires config: https://grafana.github.io/grizzly/configuration#configuring-grizzly-with-environment-variables
 	grr snapshot -e 1000 dashboards.jsonnet

@@ -1,0 +1,80 @@
+{
+  "dashboards": [
+    {
+      "apiVersion": "grizzly.grafana.com/v1alpha1",
+      "kind": "Dashboard",
+      "metadata": {
+        "folder": "example-name",
+        "name": "example-dashboard-name"
+      },
+      "spec": {
+        "annotations": {
+          "list": []
+        },
+        "description": "Example dashboard built with joy",
+        "editable": true,
+        "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
+        "panels": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "grafana"
+            },
+            "gridPos": {
+              "h": 9,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            },
+            "repeatDirection": "h",
+            "targets": [
+              {
+                "expr": "random_walk",
+                "refId": ""
+              }
+            ],
+            "title": "Random walk",
+            "transparent": false,
+            "type": "timeseries"
+          }
+        ],
+        "schemaVersion": 39,
+        "templating": {},
+        "timezone": "browser",
+        "title": "Example dashboard",
+        "uid": "example-dashboard-name"
+      }
+    }
+  ],
+  "datasources": [
+    {
+      "apiVersion": "grizzly.grafana.com/v1alpha1",
+      "kind": "Datasource",
+      "metadata": {
+        "name": "example-datasource-name"
+      },
+      "spec": {
+        "jsonData": {
+          "enableSecureSocksProxy": false,
+          "httpMethod": "POST"
+        },
+        "name": "prometheus-demo-query",
+        "orgId": 1,
+        "type": "prometheus",
+        "uid": "de7rd55gggohsc",
+        "url": "https://prometheus.demo.do.prometheus.io"
+      }
+    }
+  ],
+  "folder": {
+    "apiVersion": "grizzly.grafana.com/v1alpha1",
+    "kind": "DashboardFolder",
+    "metadata": {
+      "name": "example-name"
+    },
+    "spec": {
+      "title": "Example Folder"
+    }
+  }
+}
