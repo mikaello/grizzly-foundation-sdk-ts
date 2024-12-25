@@ -1,0 +1,22 @@
+# create github actions run node tests
+
+name: Run Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: kobtea/setup-jsonnet-action@v2
+      - name: Install JSONNET dependencies
+        run: cd jsonnet-example && jb install
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "latest"
+      - name: Install dependencies
+        run: npm ci && npm --prefix ./foundation-sdk-example ci
+      - name: Run tests
+        run: npm run test
