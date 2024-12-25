@@ -21,6 +21,10 @@ Then, you can invoke this from Grizzly like so:
 
 `grr show -r environments/<my-environment>/grr.libsonnet`
 
+## Develop
+
+Edit the files in [./src](./src) and check your result with `npm run test` or the generate output commands described below.
+
 ## Compile test JSON from Grizzly and Foundation SDK
 
 ### Grizzly
