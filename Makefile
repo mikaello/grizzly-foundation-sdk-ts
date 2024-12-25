@@ -27,7 +27,7 @@ generate-test-dashboards-foundation-sdk:
 	npm run -s build | jq --sort-keys > compiled.json
 
 deploy-snapshot: # Requires config: https://grafana.github.io/grizzly/configuration#configuring-grizzly-with-environment-variables
-	grr snapshot -e 1000 dashboards.jsonnet
+	grr snapshot -e 1000 jsonnet-example/compiled.json
 
 # Start a grafana docker instance to test deploying snapshot to that:
 grafana-start:
