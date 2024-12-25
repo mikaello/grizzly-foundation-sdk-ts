@@ -1,6 +1,3 @@
-// folder from @grafana/grafana-foundation-sdk
-//import { folder } from "@grafana/grafana-foundation-sdk";
-
 import {
   dashboard,
   datasource,
