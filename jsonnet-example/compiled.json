@@ -14,32 +14,35 @@
         "description": "Example dashboard built with joy",
         "editable": true,
         "fiscalYearStartMonth": 0,
+        "graphTooltip": 0,
         "panels": [
           {
             "datasource": {
-              "type": "datasource",
-              "uid": "-- Mixed --"
+              "type": "prometheus",
+              "uid": "grafana"
             },
             "gridPos": {
-              "h": 8,
-              "w": 24
+              "h": 9,
+              "w": 12,
+              "x": 0,
+              "y": 0
             },
             "id": 1,
             "pluginVersion": "v11.4.0",
+            "repeatDirection": "h",
             "targets": [
               {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "grafana"
-                },
-                "expr": "random_walk"
+                "expr": "random_walk",
+                "refId": ""
               }
             ],
             "title": "Random walk",
+            "transparent": false,
             "type": "timeseries"
           }
         ],
         "schemaVersion": 39,
+        "templating": {},
         "time": {
           "from": "now-6h",
           "to": "now"

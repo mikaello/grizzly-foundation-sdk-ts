@@ -4,45 +4,56 @@ import { describe, it } from "node:test";
 import assert from "node:assert";
 //import { generateJson1 } from "../src/index";
 
-const jsonnetFile = "../jsonnet-example/compiled.json";
+let workDir = "."; // when running with `npm run test` dir will be root
+if (execSync("pwd").toString().endsWith("test")) {
+  workDir = "..";
+}
 
-describe("JSON Generation and Comparison Tests", () => {
+const jsonnetFile = `${workDir}/jsonnet-example/compiled.json`;
+const foundationSdkFile = `${workDir}/foundation-sdk-example/compiled.json`;
+
+describe("JSON Generation", () => {
   it("should generate jsonnet compiled.json using Makefile", () => {
-    execSync("make -C .. generate-test-dashboards-grizzly", {
+    execSync(`make -C ${workDir} generate-test-dashboards-grizzly`, {
       stdio: "inherit",
     });
-    console.log("after make");
     assert.ok(existsSync(jsonnetFile), `${jsonnetFile} should exist`);
     const content = JSON.parse(readFileSync(jsonnetFile, "utf8"));
-    console.log(content);
-    assert.deepStrictEqual(content, { message: "Hello from Makefile" });
+    assert.ok(content, "jsonnet generated content should exist");
   });
 
-  /*
-  it("should compare properties and values of data1.json and data2.json", () => {
-    const file1Path = join(generatedDir, "data1.json");
-    const file2Path = join(generatedDir, "data2.json");
-
-    assert.ok(existsSync(file1Path), "data1.json should exist");
-    assert.ok(existsSync(file2Path), "data2.json should exist");
-
-    const data1 = JSON.parse(readFileSync(file1Path, "utf8"));
-    const data2 = JSON.parse(readFileSync(file2Path, "utf8"));
-
-    const expectedData1Subset = { message: "Hello from TypeScript" };
-    const expectedData2Subset = { message: "Hello from Makefile" };
-
-    // Partial matching using Node.js' built-in `partialDeepStrictEqual`
-    assert.partialDeepStrictEqual(
-      data1,
-      expectedData1Subset,
-      "data1.json should match the expected subset"
+  it("should generate Foundation SDK compiled.json using Makefile", () => {
+    execSync(`make -C ${workDir} generate-test-dashboards-foundation-sdk`, {
+      stdio: "inherit",
+    });
+    assert.ok(
+      existsSync(foundationSdkFile),
+      `${foundationSdkFile} should exist`
     );
-    assert.partialDeepStrictEqual(
-      data2,
-      expectedData2Subset,
-      "data2.json should match the expected subset"
+    const content = JSON.parse(readFileSync(jsonnetFile, "utf8"));
+    assert.ok(content, "Foundation SDK generated content should exist");
+  });
+});
+
+describe("JSON Comparison", () => {
+  it("should compare jsonnet compiled.json and Foundation SDK compiled.json", () => {
+    assert.ok(existsSync(jsonnetFile), `${jsonnetFile} should exist`);
+    assert.ok(
+      existsSync(foundationSdkFile),
+      `${foundationSdkFile} should exist`
+    );
+
+    const jsonnetContent = JSON.parse(readFileSync(jsonnetFile, "utf8"));
+    const foundationSdkContent = JSON.parse(
+      readFileSync(foundationSdkFile, "utf8")
+    );
+
+    // @ts-ignore
+    //assert.partialDeepStrictEqual(
+    assert.deepStrictEqual(
+      jsonnetContent,
+      foundationSdkContent,
+      "jsonnet compiled.json should match Foundation SDK compiled.json"
     );
   });
-  */
 });

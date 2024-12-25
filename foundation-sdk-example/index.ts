@@ -8,8 +8,8 @@ import {
   resource,
 } from "@mikaello/grizzly-foundation-sdk-ts";
 
-import { exampleDashboard } from "./example-dashboard.js";
-import { exampleDatasource } from "example-datasource.js";
+import { exampleDashboard } from "./example-dashboard.ts";
+import { exampleDatasource } from "./example-datasource.ts";
 
 let resources = {
   folder: folder.new("example-name", "Example Folder"),
@@ -22,5 +22,8 @@ let resources = {
     ),
   ],
 };
+
+// @ts-ignore - not able to remove plugin version from JSONNET output
+resources.dashboards[0].spec.panels[0].pluginVersion = "v11.4.0"
 
 console.log(JSON.stringify(resources, null, 2));

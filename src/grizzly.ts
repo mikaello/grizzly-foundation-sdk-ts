@@ -5,16 +5,20 @@ import {
   getFolder,
   fromMap,
   fromMixins,
-} from "./grafana.js";
-import { getMixinRuleNames, fromMapsFiltered, rule_group } from "./prometheus.js";
+} from "./grafana.ts";
+import {
+  getMixinRuleNames,
+  fromMapsFiltered,
+  rule_group,
+} from "./prometheus.ts";
 import {
   defaultApiVersion,
   withApiVersion,
   addMetadata,
   newResource,
   withSpec,
-} from "./resource.js";
-import { newCheck } from "./check.js";
+} from "./resource.ts";
+import { newCheck } from "./check.ts";
 
 type Main = {
   grafanaDashboards: Record<string, any>;

@@ -6,6 +6,11 @@ install-tools:
 	go install -a github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb@latest
 	go install -a github.com/grafana/grizzly/cmd/grr@v0.6.1
 
+nvm:
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+	echo "Run the following command to get latest node:"
+	echo "nvm install node"
+
 format-jsonnet:
 	go install github.com/google/go-jsonnet/cmd/jsonnetfmt@latest
 	jsonnetfmt -i ${jsonnetExampleDir}/*.jsonnet
