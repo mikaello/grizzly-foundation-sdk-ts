@@ -22,11 +22,11 @@ describe("Check correct tools are installed", () => {
     const version = nodeVersion.split("v")[1].split(".");
     assert.ok(
       Number(version[0]) >= 22,
-      "Node version should be 22.6.0 or higher",
+      "Node version should be 22.6.0 or higher. Current version is " + nodeVersion,
     );
     assert.ok(
       Number(version[1]) >= 6,
-      "Node version should be 22.6.0 or higher",
+      "Node version should be 22.6.0 or higher. Current version is " + nodeVersion,
     );
   });
 });
