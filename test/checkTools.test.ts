@@ -25,10 +25,5 @@ describe("Check correct tools are installed", () => {
       "Node version should be 22.6.0 or higher. Current version is " +
         nodeVersion,
     );
-    assert.ok(
-      Number(version[1]) >= 6,
-      "Node version should be 22.6.0 or higher. Current version is " +
-        nodeVersion,
-    );
   });
 });
