@@ -1,9 +1,19 @@
 # grizzly-foundation-sdk-ts
 
+[![npm](https://img.shields.io/npm/v/@mikaello/grizzly-foundation-sdk-ts.svg?style=flat-square)](https://www.npmjs.com/package/@mikaello/grizzly-foundation-sdk-ts)
+
 This library provides utilities for [Grizzly](https://github.com/grafana/grizzly), a utility for managing observability resources on Grafana and hosted Prometheus installations.
 
 They are converted from the Jsonnet library <https://github.com/grafana/jsonnet-libs/tree/master/grizzly>, so that they can be used form Foundation SDK (TypeScript).
 This library is useful / necessary if you want to export multiple types of resources in a single output.
+
+## Install
+
+```shell
+npm install @mikaello/grizzly-foundation-sdk-ts
+```
+
+See example usage in [./foundation-sdk-example](./foundation-sdk-example).
 
 ## Develop
 
