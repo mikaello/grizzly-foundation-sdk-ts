@@ -14,5 +14,5 @@ export let exampleDashboard = new DashboardBuilder("example-dashboard-name")
       .id(1)
       .title("Random walk")
       .datasource({ type: "prometheus", uid: "grafana" }) // uid: "grafana"
-      .withTarget(new DataqueryBuilder().expr("random_walk"))
+      .withTarget(new DataqueryBuilder().expr("random_walk")),
   );

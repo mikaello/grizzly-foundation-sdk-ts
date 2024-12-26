@@ -9,7 +9,7 @@ export const getFolder = (main: {
 
 export const fromMap = (
   dashboards: Record<string, any>,
-  folder: string
+  folder: string,
 ): Record<string, any> => {
   const result: Record<string, any> = {};
   for (const k in dashboards) {
@@ -17,14 +17,14 @@ export const fromMap = (
       "Dashboard",
       k.replace(/\.json|\.yaml|\.yml$/, ""),
       dashboards[k],
-      { folder }
+      { folder },
     );
   }
   return result;
 };
 
 export const fromMixins = (
-  mixins: Record<string, any>
+  mixins: Record<string, any>,
 ): Record<string, any> => {
   const result: Record<string, any> = {};
   for (const key in mixins) {
@@ -35,7 +35,7 @@ export const fromMixins = (
         "Dashboard",
         k.replace(/\.json|\.yaml|\.yml$/, ""),
         mixin.grafanaDashboards[k],
-        { folder }
+        { folder },
       );
     }
   }

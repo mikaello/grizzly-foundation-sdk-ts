@@ -4,10 +4,10 @@ import { makeResource } from "./util.ts";
 export const getMixinRuleNames = (mixins: Record<string, any>): string[] => {
   const flatMixins = Object.values(mixins).flat();
   const mixinRules = flatMixins.flatMap(
-    (mixin) => mixin.prometheusRules?.groups || []
+    (mixin) => mixin.prometheusRules?.groups || [],
   );
   const mixinAlerts = flatMixins.flatMap(
-    (mixin) => mixin.prometheusAlerts?.groups || []
+    (mixin) => mixin.prometheusAlerts?.groups || [],
   );
   return [
     ...mixinAlerts.map((group) => group.name),
@@ -20,13 +20,13 @@ export const fromMaps = (rules: Record<string, any>): Record<string, any> => {
     Object.keys(rules).map((k) => [
       k,
       makeResource("PrometheusRuleGroup", k, { groups: rules }, {}),
-    ])
+    ]),
   );
 };
 
 export const fromMapsFiltered = (
   rules: Record<string, any>,
-  excludes: string[]
+  excludes: string[],
 ): Record<string, any> => {
   const filterRules = (rules: any, excludeList: string[]) =>
     rules.groups.filter((rule: any) => !excludeList.includes(rule.name));
@@ -38,14 +38,14 @@ export const fromMapsFiltered = (
         "PrometheusRuleGroup",
         k.replace(/\.json|\.yaml|\.yml$/, ""),
         { groups: filterRules(rules, excludes) },
-        {}
+        {},
       ),
-    ])
+    ]),
   );
 };
 
 export const fromMixins = (
-  mixins: Record<string, any>
+  mixins: Record<string, any>,
 ): Record<string, any> => {
   const result: Record<string, any> = {};
   for (const key in mixins) {
@@ -58,7 +58,7 @@ export const fromMixins = (
           ...(mixin.prometheusAlerts || {}),
           ...(mixin.prometheusRules || {}),
         },
-        {}
+        {},
       );
     }
   }

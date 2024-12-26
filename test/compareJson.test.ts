@@ -2,7 +2,12 @@ import { execSync } from "child_process";
 import { existsSync, readFileSync } from "fs";
 import { describe, it } from "node:test";
 import assert from "node:assert";
-//import { generateJson1 } from "../src/index";
+
+/**
+ * This test generates JSON file from both Jsonnet (grafonnet + grizzly lib) and from
+ * TypeScript (Foundation SDK + this lib which is the Grizzly converted lib), and compares
+ * the output of both and expects them to be equal.
+ */
 
 let workDir = "."; // when running with `npm run test` dir will be root
 if (execSync("pwd").toString().endsWith("test")) {
@@ -28,7 +33,7 @@ describe("JSON Generation", () => {
     });
     assert.ok(
       existsSync(foundationSdkFile),
-      `${foundationSdkFile} should exist`
+      `${foundationSdkFile} should exist`,
     );
     const content = JSON.parse(readFileSync(jsonnetFile, "utf8"));
     assert.ok(content, "Foundation SDK generated content should exist");
@@ -40,12 +45,12 @@ describe("JSON Comparison", () => {
     assert.ok(existsSync(jsonnetFile), `${jsonnetFile} should exist`);
     assert.ok(
       existsSync(foundationSdkFile),
-      `${foundationSdkFile} should exist`
+      `${foundationSdkFile} should exist`,
     );
 
     const jsonnetContent = JSON.parse(readFileSync(jsonnetFile, "utf8"));
     const foundationSdkContent = JSON.parse(
-      readFileSync(foundationSdkFile, "utf8")
+      readFileSync(foundationSdkFile, "utf8"),
     );
 
     // @ts-ignore
@@ -53,7 +58,7 @@ describe("JSON Comparison", () => {
     assert.deepStrictEqual(
       jsonnetContent,
       foundationSdkContent,
-      "jsonnet compiled.json should match Foundation SDK compiled.json"
+      "jsonnet compiled.json should match Foundation SDK compiled.json",
     );
   });
 });

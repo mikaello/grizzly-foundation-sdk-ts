@@ -15,12 +15,12 @@ let resources = {
     resource.addMetadata(
       dashboard.new("example-dashboard-name", exampleDashboard.build()),
       "folder",
-      "example-name"
+      "example-name",
     ),
   ],
 };
 
 // @ts-ignore - not able to remove plugin version from JSONNET output
-resources.dashboards[0].spec.panels[0].pluginVersion = "v11.4.0"
+resources.dashboards[0].spec.panels[0].pluginVersion = "v11.4.0";
 
 console.log(JSON.stringify(resources, null, 2));
