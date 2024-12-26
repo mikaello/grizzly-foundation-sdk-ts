@@ -4,7 +4,7 @@
 
 This library provides utilities for [Grizzly](https://github.com/grafana/grizzly), a utility for managing observability resources on Grafana and hosted Prometheus installations.
 
-They are converted from the Jsonnet library <https://github.com/grafana/jsonnet-libs/tree/master/grizzly>, so that they can be used form Foundation SDK (TypeScript).
+They are converted from the Jsonnet library <https://github.com/grafana/jsonnet-libs/tree/master/grizzly>, so that they can be used from Foundation SDK (TypeScript).
 This library is useful / necessary if you want to export multiple types of resources in a single output.
 
 ## Install
