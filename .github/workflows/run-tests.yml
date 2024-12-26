@@ -18,5 +18,7 @@ jobs:
         run: npm ci && npm --prefix ./foundation-sdk-example ci
       - name: Verify TypeScript
         run: npm run verify-typescript
+      - name: Check formatting
+        run: npm run check-format
       - name: Run tests
         run: npm run test
