@@ -15,7 +15,7 @@
   },
   "description": "Example usage of the Grizzly wrappers for Foundation SDK",
   "dependencies": {
-    "@grafana/grafana-foundation-sdk": "11.4.0-cogv0.0.x.1736941839",
+    "@grafana/grafana-foundation-sdk": "11.4.0-cogv0.0.x.1737672993",
     "@mikaello/grizzly-foundation-sdk-ts": "file:./../"
   },
   "devDependencies": {
