@@ -12,7 +12,7 @@
   },
   "author": "mikaello",
   "devDependencies": {
-    "@types/node": "22.13.1",
+    "@types/node": "22.13.4",
     "prettier": "3.4.2",
     "typescript": "5.7.3"
   }
