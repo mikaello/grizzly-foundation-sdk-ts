@@ -7,6 +7,7 @@
   "repository": "github:mikaello/grizzly-foundation-sdk-ts",
   "scripts": {
     "verify-typescript": "tsc -p tsconfig.json --noEmit",
+    "build": "tsc -p tsconfig.json",
     "test": "node --experimental-strip-types --test --test-reporter spec ./test/*.test.ts",
     "check-format": "prettier --check \"**/(*.ts?(x)|*.js?(x)|*.json|*.css|*.html|*.md?(x))\"",
     "format": "prettier --write \"**/(*.ts?(x)|*.js?(x)|*.json|*.css|*.html|*.md?(x))\""
