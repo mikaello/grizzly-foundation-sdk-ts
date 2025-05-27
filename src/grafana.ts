@@ -42,6 +42,18 @@ export const fromMixins = (
   return result;
 };
 
+/**
+ * Create a new Dashboard resource:
+ *
+ * ```yml
+ * apiVersion: grizzly.grafana.com/v1alpha1
+ * kind: Dashboard
+ * metadata:
+ *   name: <name>
+ * spec:
+ *   <datasourceJson>
+ * ```
+ */
 export const dashboard = {
   new: (name: string, dashboardJson: any) => {
     const resource = newResource("Dashboard", name);
@@ -49,6 +61,18 @@ export const dashboard = {
   },
 };
 
+/**
+ * Create a new Folder resource:
+ *
+ * ```yml
+ * apiVersion: grizzly.grafana.com/v1alpha1
+ * kind: Datasource
+ * metadata:
+ *   name: <name>
+ * spec:
+ *   title: <title>
+ * ```
+ */
 export const folder = {
   new: (name: string, title: string) => {
     const resource = newResource("DashboardFolder", name);
@@ -56,9 +80,66 @@ export const folder = {
   },
 };
 
+/**
+ * Create a new Datasource resource:
+ *
+ * ```yml
+ * apiVersion: grizzly.grafana.com/v1alpha1
+ * kind: Datasource
+ * metadata:
+ *   name: <name>
+ * spec:
+ *   <datasourceJson>
+ * ```
+ */
 export const datasource = {
   new: (name: string, datasourceJson: any) => {
     const resource = newResource("Datasource", name);
+    return withSpec(resource, datasourceJson);
+  },
+};
+
+/**
+ * Create a new AlertContactPoint resource:
+ *
+ * ```yml
+ * apiVersion: grizzly.grafana.com/v1alpha1
+ * kind: AlertContactPoint
+ * metadata:
+ *   name: <name>
+ * spec:
+ *   <datasourceJson>
+ * ```
+ */
+export const alertContactPoint = {
+  new: (name: string, datasourceJson: any) => {
+    const resource = newResource("AlertContactPoint", name);
+    return withSpec(resource, datasourceJson);
+  },
+};
+
+/**
+ * **NB**: The name must be in the format `<alert-folder>.<alert-name>`.
+ *
+ * Create a new AlertRuleGroup resource:
+ * ```yml
+ * apiVersion: grizzly.grafana.com/v1alpha1
+ * kind: AlertRuleGroup
+ * metadata:
+ *   name: <name>
+ * spec:
+ *   <datasourceJson>
+ * ```
+ */
+export const alertRuleGroup = {
+  new: (name: string, datasourceJson: any) => {
+    // Ensure the name is in the format `<alert-folder>.<alert-name>`
+    if (!name.includes(".")) {
+      throw new Error(
+        "AlertRuleGroup name must be in the format `<alert-folder>.<alert-name>`",
+      );
+    }
+    const resource = newResource("AlertRuleGroup", name);
     return withSpec(resource, datasourceJson);
   },
 };

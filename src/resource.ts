@@ -8,6 +8,18 @@ type Resource = {
   };
 };
 
+/**
+ * Create a new resource of given kind:
+ *
+ * ```yml
+ * apiVersion: grizzly.grafana.com/v1alpha1
+ * kind: <kind>
+ * metadata:
+ *   name: <name>
+ * ```
+ *
+ * See {@link withApiVersion}, {@link addMetadata} and {@link withSpec} for helper functions that can alter a resource.
+ */
 export function newResource(kind: string, name: string): Resource {
   return {
     apiVersion: defaultApiVersion,
