@@ -14,7 +14,7 @@
   },
   "author": "mikaello",
   "devDependencies": {
-    "@types/node": "22.15.30",
+    "@types/node": "22.15.31",
     "prettier": "3.5.3",
     "typescript": "5.8.3"
   }
