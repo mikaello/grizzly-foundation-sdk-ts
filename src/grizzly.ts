@@ -1,4 +1,6 @@
 import {
+  alertContactPoint,
+  alertRuleGroup,
   dashboard,
   folder,
   datasource,
@@ -52,5 +54,12 @@ export const resource = {
   newResource,
   withSpec,
 };
-export { dashboard, folder, datasource, rule_group };
+export {
+  alertContactPoint,
+  alertRuleGroup,
+  dashboard,
+  folder,
+  datasource,
+  rule_group,
+};
 export const synthetic_monitoring_check = newCheck;
