@@ -1,6 +1,6 @@
 {
   "name": "@mikaello/grizzly-foundation-sdk-ts",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "main": "./src/grizzly.ts",
   "type": "module",
   "description": "This library provides utilities for [Grizzly](https://github.com/grafana/grizzly), a utility for managing observability resources on Grafana and hosted Prometheus installations.",
