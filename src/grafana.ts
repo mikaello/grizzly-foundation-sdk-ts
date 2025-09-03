@@ -132,14 +132,8 @@ export const alertContactPoint = {
  * ```
  */
 export const alertRuleGroup = {
-  new: (name: string, datasourceJson: any) => {
-    // Ensure the name is in the format `<alert-folder>.<alert-name>`
-    if (!name.includes(".")) {
-      throw new Error(
-        "AlertRuleGroup name must be in the format `<alert-folder>.<alert-name>`",
-      );
-    }
-    const resource = newResource("AlertRuleGroup", name);
+  new: (folder: string, name: string, datasourceJson: any) => {
+    const resource = newResource("AlertRuleGroup", `${folder}.${name}`);
     return withSpec(resource, datasourceJson);
   },
 };
