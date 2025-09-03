@@ -119,14 +119,14 @@ export const alertContactPoint = {
 };
 
 /**
- * **NB**: The name must be in the format `<alert-folder>.<alert-name>`.
+ * The alert folder will be combined with name in the generated resource.
  *
  * Create a new AlertRuleGroup resource:
  * ```yml
  * apiVersion: grizzly.grafana.com/v1alpha1
  * kind: AlertRuleGroup
  * metadata:
- *   name: <name>
+ *   name: <folder>.<name>
  * spec:
  *   <datasourceJson>
  * ```
