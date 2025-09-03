@@ -21,6 +21,7 @@ import {
   withSpec,
 } from "./resource.ts";
 import { newCheck } from "./check.ts";
+import { BRANCH_POSTFIX } from "./util.ts";
 
 type Main = {
   grafanaDashboards: Record<string, any>;
@@ -57,6 +58,7 @@ export const resource = {
 export {
   alertContactPoint,
   alertRuleGroup,
+  BRANCH_POSTFIX,
   dashboard,
   folder,
   datasource,
