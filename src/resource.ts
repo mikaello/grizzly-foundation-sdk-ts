@@ -1,6 +1,7 @@
 export const defaultApiVersion = "grizzly.grafana.com/v1alpha1";
 
-export type Kind = "Datasource"
+export type Kind =
+  | "Datasource"
   | "DashboardFolder"
   | "LibraryElement"
   | "Dashboard"
@@ -33,7 +34,10 @@ export type Resource<T extends Kind> = {
  *
  * See {@link withApiVersion}, {@link addMetadata} and {@link withSpec} for helper functions that can alter a resource.
  */
-export function newResource<T extends Kind>(kind: T, name: string): Resource<T> {
+export function newResource<T extends Kind>(
+  kind: T,
+  name: string,
+): Resource<T> {
   return {
     apiVersion: defaultApiVersion,
     kind: kind,
@@ -43,14 +47,21 @@ export function newResource<T extends Kind>(kind: T, name: string): Resource<T> 
   };
 }
 
-export function withApiVersion<T extends Kind>(resource: Resource<T>, apiVersion: string): Resource<T> {
+export function withApiVersion<T extends Kind>(
+  resource: Resource<T>,
+  apiVersion: string,
+): Resource<T> {
   return {
     ...resource,
     apiVersion: apiVersion,
   };
 }
 
-export function addMetadata<T extends Kind>(resource: Resource<T>, name: string, value: any): Resource<T> {
+export function addMetadata<T extends Kind>(
+  resource: Resource<T>,
+  name: string,
+  value: any,
+): Resource<T> {
   return {
     ...resource,
     metadata: {
@@ -60,7 +71,10 @@ export function addMetadata<T extends Kind>(resource: Resource<T>, name: string,
   };
 }
 
-export function withSpec<T extends Kind>(resource: Resource<T>, spec: any): Resource<T> {
+export function withSpec<T extends Kind>(
+  resource: Resource<T>,
+  spec: any,
+): Resource<T> {
   return {
     ...resource,
     spec: spec,
