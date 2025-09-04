@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { defaultApiVersion } from "./resource.ts";
 
 export function get<T>(
   obj: Record<string, any>,
@@ -15,7 +16,7 @@ export function makeResource(
   metadata: Record<string, any> = {},
 ): Record<string, any> {
   return {
-    apiVersion: "grizzly.grafana.com/v1alpha1",
+    apiVersion: defaultApiVersion,
     kind,
     metadata: {
       name,
