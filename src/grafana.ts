@@ -1,4 +1,4 @@
-import { newResource, withSpec } from "./resource.ts";
+import { newResource, withSpec, type Resource } from "./resource.ts";
 import { makeResource } from "./util.ts";
 
 export const getFolder = (main: {
@@ -55,7 +55,7 @@ export const fromMixins = (
  * ```
  */
 export const dashboard = {
-  new: (name: string, dashboardJson: any) => {
+  new: (name: string, dashboardJson: any): Resource<"Dashboard"> => {
     const resource = newResource("Dashboard", name);
     return withSpec(resource, dashboardJson);
   },
@@ -74,7 +74,7 @@ export const dashboard = {
  * ```
  */
 export const folder = {
-  new: (name: string, title: string) => {
+  new: (name: string, title: string): Resource<"DashboardFolder"> => {
     const resource = newResource("DashboardFolder", name);
     return withSpec(resource, { title });
   },
@@ -93,7 +93,7 @@ export const folder = {
  * ```
  */
 export const datasource = {
-  new: (name: string, datasourceJson: any) => {
+  new: (name: string, datasourceJson: any): Resource<"Datasource"> => {
     const resource = newResource("Datasource", name);
     return withSpec(resource, datasourceJson);
   },
@@ -112,7 +112,7 @@ export const datasource = {
  * ```
  */
 export const alertContactPoint = {
-  new: (name: string, datasourceJson: any) => {
+  new: (name: string, datasourceJson: any): Resource<"AlertContactPoint"> => {
     const resource = newResource("AlertContactPoint", name);
     return withSpec(resource, datasourceJson);
   },
@@ -132,7 +132,11 @@ export const alertContactPoint = {
  * ```
  */
 export const alertRuleGroup = {
-  new: (folder: string, name: string, datasourceJson: any) => {
+  new: (
+    folder: string,
+    name: string,
+    datasourceJson: any,
+  ): Resource<"AlertRuleGroup"> => {
     const resource = newResource("AlertRuleGroup", `${folder}.${name}`);
     return withSpec(resource, datasourceJson);
   },

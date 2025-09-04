@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { defaultApiVersion } from "./resource.ts";
+import { defaultApiVersion, type Kind, type Resource } from "./resource.ts";
 
 export function get<T>(
   obj: Record<string, any>,
@@ -9,12 +9,12 @@ export function get<T>(
   return obj.hasOwnProperty(key) ? obj[key] : defaultValue;
 }
 
-export function makeResource(
-  kind: string,
+export function makeResource<T extends Kind>(
+  kind: T,
   name: string,
   resource: any,
   metadata: Record<string, any> = {},
-): Record<string, any> {
+): Resource<T> {
   return {
     apiVersion: defaultApiVersion,
     kind,
