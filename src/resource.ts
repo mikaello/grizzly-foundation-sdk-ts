@@ -1,8 +1,19 @@
 export const defaultApiVersion = "grizzly.grafana.com/v1alpha1";
 
-type Resource = {
+export type Kind = "Datasource"
+  | "DashboardFolder"
+  | "LibraryElement"
+  | "Dashboard"
+  | "AlertRuleGroup"
+  | "AlertNotificationPolicy"
+  | "AlertContactPoint"
+  | "AlertNotificationTemplate"
+  | "PrometheusRuleGroup"
+  | "SyntheticMonitoringCheck";
+
+export type Resource = {
   apiVersion: string;
-  kind: string;
+  kind: Kind;
   metadata: {
     name: string;
   };
@@ -20,7 +31,7 @@ type Resource = {
  *
  * See {@link withApiVersion}, {@link addMetadata} and {@link withSpec} for helper functions that can alter a resource.
  */
-export function newResource(kind: string, name: string): Resource {
+export function newResource(kind: Kind, name: string): Resource {
   return {
     apiVersion: defaultApiVersion,
     kind: kind,

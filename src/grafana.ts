@@ -1,4 +1,4 @@
-import { newResource, withSpec } from "./resource.ts";
+import { newResource, withSpec, type Resource } from "./resource.ts";
 import { makeResource } from "./util.ts";
 
 export const getFolder = (main: {
@@ -40,6 +40,10 @@ export const fromMixins = (
     }
   }
   return result;
+};
+
+type Dashboard = {
+  new: (name: string, dashboardJson: any) => Resource & { kind: "Dashboard", spec: any};
 };
 
 /**
