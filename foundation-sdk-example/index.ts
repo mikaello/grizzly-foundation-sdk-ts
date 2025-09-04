@@ -20,8 +20,6 @@ let resources = {
   ],
 };
 
-const a = datasource.new("example-datasource-name", exampleDatasource)
-
 // @ts-ignore - not able to remove plugin version from JSONNET output
 resources.dashboards[0].spec.panels[0].pluginVersion = "v11.4.0";
 

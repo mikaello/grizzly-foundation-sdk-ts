@@ -11,12 +11,14 @@ export type Kind = "Datasource"
   | "PrometheusRuleGroup"
   | "SyntheticMonitoringCheck";
 
-export type Resource = {
+export type Resource<T extends Kind> = {
   apiVersion: string;
-  kind: Kind;
+  kind: T;
   metadata: {
     name: string;
+    [key: string]: any;
   };
+  spec?: any;
 };
 
 /**
@@ -31,7 +33,7 @@ export type Resource = {
  *
  * See {@link withApiVersion}, {@link addMetadata} and {@link withSpec} for helper functions that can alter a resource.
  */
-export function newResource(kind: Kind, name: string): Resource {
+export function newResource<T extends Kind>(kind: T, name: string): Resource<T> {
   return {
     apiVersion: defaultApiVersion,
     kind: kind,
@@ -41,15 +43,14 @@ export function newResource(kind: Kind, name: string): Resource {
   };
 }
 
-export function withApiVersion(resource: Resource, apiVersion: string) {
+export function withApiVersion<T extends Kind>(resource: Resource<T>, apiVersion: string): Resource<T> {
   return {
     ...resource,
-    defaultApiVersion: apiVersion,
     apiVersion: apiVersion,
   };
 }
 
-export function addMetadata(resource: Resource, name: string, value: any) {
+export function addMetadata<T extends Kind>(resource: Resource<T>, name: string, value: any): Resource<T> {
   return {
     ...resource,
     metadata: {
@@ -59,7 +60,7 @@ export function addMetadata(resource: Resource, name: string, value: any) {
   };
 }
 
-export function withSpec(resource: Resource, spec: any) {
+export function withSpec<T extends Kind>(resource: Resource<T>, spec: any): Resource<T> {
   return {
     ...resource,
     spec: spec,
