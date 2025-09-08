@@ -108,13 +108,13 @@ export const datasource = {
  * metadata:
  *   name: <name>
  * spec:
- *   <datasourceJson>
+ *   <alertContactPointJson>
  * ```
  */
 export const alertContactPoint = {
-  new: (name: string, datasourceJson: any): Resource<"AlertContactPoint"> => {
+  new: (name: string, alertContactPointJson: any): Resource<"AlertContactPoint"> => {
     const resource = newResource("AlertContactPoint", name);
-    return withSpec(resource, datasourceJson);
+    return withSpec(resource, alertContactPointJson);
   },
 };
 
@@ -128,16 +128,16 @@ export const alertContactPoint = {
  * metadata:
  *   name: <folder>.<name>
  * spec:
- *   <datasourceJson>
+ *   <alertRuleGroupJson>
  * ```
  */
 export const alertRuleGroup = {
   new: (
     folder: string,
     name: string,
-    datasourceJson: any,
+    alertRuleGroupJson: any,
   ): Resource<"AlertRuleGroup"> => {
     const resource = newResource("AlertRuleGroup", `${folder}.${name}`);
-    return withSpec(resource, datasourceJson);
+    return withSpec(resource, alertRuleGroupJson);
   },
 };
