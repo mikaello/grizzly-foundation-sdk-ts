@@ -11,7 +11,7 @@ jobs:
       - name: Install JSONNET dependencies
         run: cd jsonnet-example && jb install
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: "latest"
       - name: Install dependencies
