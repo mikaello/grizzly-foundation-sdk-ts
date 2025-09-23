@@ -141,3 +141,26 @@ export const alertRuleGroup = {
     return withSpec(resource, alertRuleGroupJson);
   },
 };
+
+/**
+ * The notification template will be combined with name in the generated resource.
+ *
+ * Create a new AlertNotificationPolicy resource:
+ * ```yml
+ * apiVersion: grizzly.grafana.com/v1alpha1
+ * kind: AlertNotificationTemplate
+ * metadata:
+ *   name: <name>
+ * spec:
+ *   <alertNotificationTemplateJson>
+ * ```
+ */
+export const alertNotificationTemplate = {
+  new: (
+    name: string,
+    templateJson: any,
+  ): Resource<"AlertNotificationTemplate"> => {
+    const resource = newResource("AlertNotificationTemplate", name);
+    return withSpec(resource, templateJson);
+  },
+};
