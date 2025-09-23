@@ -112,7 +112,10 @@ export const datasource = {
  * ```
  */
 export const alertContactPoint = {
-  new: (name: string, alertContactPointJson: any): Resource<"AlertContactPoint"> => {
+  new: (
+    name: string,
+    alertContactPointJson: any,
+  ): Resource<"AlertContactPoint"> => {
     const resource = newResource("AlertContactPoint", name);
     return withSpec(resource, alertContactPointJson);
   },
