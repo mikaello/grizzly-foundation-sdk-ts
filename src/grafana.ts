@@ -148,7 +148,7 @@ export const alertRuleGroup = {
 /**
  * The notification template will be combined with name in the generated resource.
  *
- * Create a new AlertNotificationPolicy resource:
+ * Create a new AlertNotificationTemplate resource:
  * ```yml
  * apiVersion: grizzly.grafana.com/v1alpha1
  * kind: AlertNotificationTemplate
