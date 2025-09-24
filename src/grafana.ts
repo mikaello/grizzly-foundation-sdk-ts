@@ -112,7 +112,10 @@ export const datasource = {
  * ```
  */
 export const alertContactPoint = {
-  new: (name: string, alertContactPointJson: any): Resource<"AlertContactPoint"> => {
+  new: (
+    name: string,
+    alertContactPointJson: any,
+  ): Resource<"AlertContactPoint"> => {
     const resource = newResource("AlertContactPoint", name);
     return withSpec(resource, alertContactPointJson);
   },
@@ -139,5 +142,28 @@ export const alertRuleGroup = {
   ): Resource<"AlertRuleGroup"> => {
     const resource = newResource("AlertRuleGroup", `${folder}.${name}`);
     return withSpec(resource, alertRuleGroupJson);
+  },
+};
+
+/**
+ * The notification template will be combined with name in the generated resource.
+ *
+ * Create a new AlertNotificationTemplate resource:
+ * ```yml
+ * apiVersion: grizzly.grafana.com/v1alpha1
+ * kind: AlertNotificationTemplate
+ * metadata:
+ *   name: <name>
+ * spec:
+ *   <alertNotificationTemplateJson>
+ * ```
+ */
+export const alertNotificationTemplate = {
+  new: (
+    name: string,
+    templateJson: any,
+  ): Resource<"AlertNotificationTemplate"> => {
+    const resource = newResource("AlertNotificationTemplate", name);
+    return withSpec(resource, templateJson);
   },
 };

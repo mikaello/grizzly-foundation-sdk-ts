@@ -1,5 +1,6 @@
 import {
   alertContactPoint,
+  alertNotificationTemplate,
   alertRuleGroup,
   dashboard,
   folder,
@@ -57,6 +58,7 @@ export const resource = {
 };
 export {
   alertContactPoint,
+  alertNotificationTemplate,
   alertRuleGroup,
   BRANCH_POSTFIX,
   dashboard,
