@@ -53,6 +53,7 @@ export const fromMixins = (
  * spec:
  *   <datasourceJson>
  * ```
+ * @see Use `ManifestBuilder` from \@grafana/grafana-foundation-sdk/resource instead.
  */
 export const dashboard = {
   new: (name: string, dashboardJson: any): Resource<"Dashboard"> => {
