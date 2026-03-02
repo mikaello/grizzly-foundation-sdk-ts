@@ -14,7 +14,7 @@
   },
   "author": "mikaello",
   "devDependencies": {
-    "@types/node": "24.10.13",
+    "@types/node": "24.10.15",
     "prettier": "3.8.1",
     "typescript": "5.9.3"
   }
