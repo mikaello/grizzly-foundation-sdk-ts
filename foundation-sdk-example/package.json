@@ -19,6 +19,6 @@
     "@mikaello/grizzly-foundation-sdk-ts": "file:./../"
   },
   "devDependencies": {
-    "typescript": "5.9.3"
+    "typescript": "6.0.2"
   }
 }
