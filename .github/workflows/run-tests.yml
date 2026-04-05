@@ -1,6 +1,16 @@
 name: Run Tests
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
@@ -13,7 +23,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: "latest"
+          node-version: "22"
       - name: Install dependencies
         run: npm ci && npm --prefix ./foundation-sdk-example install --no-package-lock
       - name: Verify TypeScript
