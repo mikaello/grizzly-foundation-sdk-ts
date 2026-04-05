@@ -28,8 +28,8 @@ export const fromMapsFiltered = (
   rules: Record<string, any>,
   excludes: string[],
 ): Record<string, any> => {
-  const filterRules = (rules: any, excludeList: string[]) =>
-    rules.groups.filter((rule: any) => !excludeList.includes(rule.name));
+  const filterRules = (ruleSet: any, excludeList: string[]) =>
+    ruleSet.groups.filter((rule: any) => !excludeList.includes(rule.name));
 
   return Object.fromEntries(
     Object.keys(rules).map((k) => [
@@ -37,7 +37,7 @@ export const fromMapsFiltered = (
       makeResource(
         "PrometheusRuleGroup",
         k.replace(/\.json|\.yaml|\.yml$/, ""),
-        { groups: filterRules(rules, excludes) },
+        { groups: filterRules(rules[k], excludes) },
         {},
       ),
     ]),
