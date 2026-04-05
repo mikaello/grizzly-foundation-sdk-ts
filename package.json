@@ -1,15 +1,15 @@
 {
   "name": "@mikaello/grizzly-foundation-sdk-ts",
   "version": "1.2.2",
-  "main": "./dist/grizzly.js",
-  "types": "./dist/grizzly.d.ts",
+  "main": "./src/grizzly.ts",
   "type": "module",
   "description": "This library provides utilities for [Grizzly](https://github.com/grafana/grizzly), a utility for managing observability resources on Grafana and hosted Prometheus installations.",
   "repository": "github:mikaello/grizzly-foundation-sdk-ts",
   "scripts": {
     "verify-typescript": "tsc -p tsconfig.json --noEmit",
     "build": "tsc -p tsconfig.json",
-    "prepublishOnly": "npm run build",
+    "prepack": "npm run build && npm pkg set main='./dist/grizzly.js' types='./dist/grizzly.d.ts'",
+    "postpack": "npm pkg set main='./src/grizzly.ts' && npm pkg delete types",
     "test": "node --experimental-strip-types --test --test-reporter spec ./test/*.test.ts",
     "check-format": "prettier --check \"**/(*.ts?(x)|*.js?(x)|*.json|*.css|*.html|*.md?(x))\"",
     "format": "prettier --write \"**/(*.ts?(x)|*.js?(x)|*.json|*.css|*.html|*.md?(x))\""
