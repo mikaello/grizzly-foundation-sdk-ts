@@ -67,7 +67,7 @@ export const dashboard = {
  *
  * ```yml
  * apiVersion: grizzly.grafana.com/v1alpha1
- * kind: Datasource
+ * kind: DashboardFolder
  * metadata:
  *   name: <name>
  * spec:

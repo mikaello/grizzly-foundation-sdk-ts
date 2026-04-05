@@ -6,7 +6,7 @@ export function get<T>(
   key: string,
   defaultValue: T,
 ): T {
-  return obj.hasOwnProperty(key) ? obj[key] : defaultValue;
+  return Object.hasOwn(obj, key) ? obj[key] : defaultValue;
 }
 
 export function makeResource<T extends Kind>(
@@ -28,7 +28,7 @@ export function makeResource<T extends Kind>(
 
 /**
  * Useful utility when you are creating review environments in GitLab.
- * This creates a branch postfix you can use to differientiate resources when creating review environments.
+ * This creates a branch postfix you can use to differentiate resources when creating review environments.
  *
  * When on default branch it will be empty string (""). When on feature branch it will be a dash ("-")
  * followed by a substring of the hash of the branch name.
